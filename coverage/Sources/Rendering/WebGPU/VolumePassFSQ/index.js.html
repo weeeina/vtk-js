@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.69% </span>
+                <span class="strong">1.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/296</span>
+                <span class='fraction'>5/300</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/37</span>
+                <span class='fraction'>0/41</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.79% </span>
+                <span class="strong">1.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/280</span>
+                <span class='fraction'>5/284</span>
             </div>
         
             
@@ -726,7 +726,18 @@
 <a name='L667'></a><a href='#L667'>667</a>
 <a name='L668'></a><a href='#L668'>668</a>
 <a name='L669'></a><a href='#L669'>669</a>
-<a name='L670'></a><a href='#L670'>670</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L670'></a><a href='#L670'>670</a>
+<a name='L671'></a><a href='#L671'>671</a>
+<a name='L672'></a><a href='#L672'>672</a>
+<a name='L673'></a><a href='#L673'>673</a>
+<a name='L674'></a><a href='#L674'>674</a>
+<a name='L675'></a><a href='#L675'>675</a>
+<a name='L676'></a><a href='#L676'>676</a>
+<a name='L677'></a><a href='#L677'>677</a>
+<a name='L678'></a><a href='#L678'>678</a>
+<a name='L679'></a><a href='#L679'>679</a>
+<a name='L680'></a><a href='#L680'>680</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1126,7 +1137,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1187,7 +1197,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1273,10 +1293,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1298,6 +1314,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1402,6 +1422,7 @@ import vtkWebGPUUniformBuffer from 'vtk.js/Sources/Rendering/WebGPU/UniformBuffe
 import vtkWebGPUShaderCache from 'vtk.js/Sources/Rendering/WebGPU/ShaderCache';
 import vtkWebGPUStorageBuffer from 'vtk.js/Sources/Rendering/WebGPU/StorageBuffer';
 import vtkWebGPUSampler from 'vtk.js/Sources/Rendering/WebGPU/Sampler';
+import vtkWebGPUTypes from 'vtk.js/Sources/Rendering/WebGPU/Types';
 &nbsp;
 import { BlendMode } from 'vtk.js/Sources/Rendering/Core/VolumeMapper/Constants';
 &nbsp;
@@ -1794,8 +1815,7 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
       // the method on the data is world to index but the volume is in
       // model coordinates so really in this context it is model to index
       const modelToIndex = <span class="cstat-no" title="statement not covered" >image.getWorldToIndex();</span>
-<span class="cstat-no" title="statement not covered" >      mat4.transpose(tmp2Mat4, modelToIndex);</span>
-<span class="cstat-no" title="statement not covered" >      mat4.multiply(tmpMat4, tmp2Mat4, tmpMat4);</span>
+<span class="cstat-no" title="statement not covered" >      mat4.multiply(tmpMat4, modelToIndex, tmpMat4);</span>
       // tmpMat4 is now SC -&gt; Index
 &nbsp;
       const dims = <span class="cstat-no" title="statement not covered" >image.getDimensions();</span>
@@ -1856,7 +1876,17 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
       const iComps = <span class="cstat-no" title="statement not covered" >vprop.getIndependentComponents();</span>
       // const numIComps = iComps ? numComp : 1;
 &nbsp;
+      // half float
+      const tformat = <span class="cstat-no" title="statement not covered" >model.textureViews[vidx + 4].getTexture().getFormat();</span>
+      const tDetails = <span class="cstat-no" title="statement not covered" >vtkWebGPUTypes.getDetailsFromTextureFormat(tformat);</span>
+      const halfFloat =
+<span class="cstat-no" title="statement not covered" >        tDetails.elementSize === 2 &amp;&amp; tDetails.sampleType === 'float';</span>
+&nbsp;
       const volInfo = <span class="cstat-no" title="statement not covered" >{ scale: [255.0], offset: [0.0] };</span>
+<span class="cstat-no" title="statement not covered" >      if (halfFloat) {</span>
+<span class="cstat-no" title="statement not covered" >        volInfo.scale[0] = 1.0;</span>
+      }
+&nbsp;
       // three levels of shift scale combined into one
       // for performance in the fragment shader
 <span class="cstat-no" title="statement not covered" >      for (let compIdx = <span class="cstat-no" title="statement not covered" >0;</span> compIdx &lt; numComp; compIdx++) {</span>
@@ -1942,10 +1972,6 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
 <span class="cstat-no" title="statement not covered" >      model.UBO.sendIfNeeded(device);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    publicAPI.updateLUTImage(device);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    publicAPI.updateSSBO(device);</span>
-&nbsp;
     // add in 3d volume textures
 <span class="cstat-no" title="statement not covered" >    for (let vidx = <span class="cstat-no" title="statement not covered" >0;</span> vidx &lt; model.volumes.length; vidx++) {</span>
       const webgpuvol = <span class="cstat-no" title="statement not covered" >model.volumes[vidx];</span>
@@ -1967,6 +1993,10 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
 <span class="cstat-no" title="statement not covered" >        model.textureViews[vidx + 4] = tview;</span>
       }
     }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    publicAPI.updateLUTImage(device);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    publicAPI.updateSSBO(device);</span>
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  publicAPI.computePipelineHash = <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
@@ -2071,7 +2101,7 @@ export default { newInstance, extend };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Sep 23 2021 00:35:45 GMT+0000 (Coordinated Universal Time)
+                at Thu Sep 23 2021 18:33:20 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
