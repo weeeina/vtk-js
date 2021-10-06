@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.52% </span>
+                <span class="strong">8.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/21</span>
+                <span class='fraction'>2/24</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.52% </span>
+                <span class="strong">8.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/21</span>
+                <span class='fraction'>2/24</span>
             </div>
         
             
@@ -134,7 +134,8 @@
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,9 +150,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,11 +181,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,10 +227,9 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUSampler(<
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  publicAPI.create = <span class="fstat-no" title="function not covered" >(d</span>evice, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    model.device = device;</span>
-<span class="cstat-no" title="statement not covered" >    model.handle = model.device.getHandle().createSampler({</span>
-      magFilter: options.magFilter ? options.magFilter : 'nearest',
-      minFilter: options.minFilter ? options.minFilter : 'nearest',
-    });
+<span class="cstat-no" title="statement not covered" >    model.options.magFilter = options.magFilter ? options.magFilter : 'nearest';</span>
+<span class="cstat-no" title="statement not covered" >    model.options.minFilter = options.minFilter ? options.minFilter : 'nearest';</span>
+<span class="cstat-no" title="statement not covered" >    model.handle = model.device.getHandle().createSampler(model.options);</span>
 <span class="cstat-no" title="statement not covered" >    model.bindGroupTime.modified();</span>
   };
 &nbsp;
@@ -253,6 +254,7 @@ const DEFAULT_VALUES = {
   device: null,
   handle: null,
   name: null,
+  options: null,
 };
 &nbsp;
 // ----------------------------------------------------------------------------
@@ -263,6 +265,7 @@ export function <span class="fstat-no" title="function not covered" >extend(</sp
   // Object methods
 <span class="cstat-no" title="statement not covered" >  macro.obj(publicAPI, model);</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >  model.options = {};</span>
 <span class="cstat-no" title="statement not covered" >  model.bindGroupLayoutEntry = {</span>
     /* eslint-disable no-undef */
     visibility: GPUShaderStage.VERTEX | GPUShaderStage.FRAGMENT,
@@ -275,7 +278,7 @@ export function <span class="fstat-no" title="function not covered" >extend(</sp
 <span class="cstat-no" title="statement not covered" >  model.bindGroupTime = {};</span>
 <span class="cstat-no" title="statement not covered" >  macro.obj(model.bindGroupTime, { mtime: 0 });</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  macro.get(publicAPI, model, ['bindGroupTime', 'handle']);</span>
+<span class="cstat-no" title="statement not covered" >  macro.get(publicAPI, model, ['bindGroupTime', 'handle', 'options']);</span>
 <span class="cstat-no" title="statement not covered" >  macro.setGet(publicAPI, model, ['bindGroupLayoutEntry', 'device', 'name']);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  vtkWebGPUSampler(publicAPI, model);</span>
@@ -295,7 +298,7 @@ export default { newInstance, extend };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Oct 06 2021 17:58:36 GMT+0000 (Coordinated Universal Time)
+                at Wed Oct 06 2021 20:04:18 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

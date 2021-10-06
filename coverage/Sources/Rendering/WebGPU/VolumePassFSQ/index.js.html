@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.48% </span>
+                <span class="strong">1.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/337</span>
+                <span class='fraction'>5/333</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/59</span>
+                <span class='fraction'>0/55</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.57% </span>
+                <span class="strong">1.59% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/319</span>
+                <span class='fraction'>5/315</span>
             </div>
         
             
@@ -1034,12 +1034,7 @@
 <a name='L975'></a><a href='#L975'>975</a>
 <a name='L976'></a><a href='#L976'>976</a>
 <a name='L977'></a><a href='#L977'>977</a>
-<a name='L978'></a><a href='#L978'>978</a>
-<a name='L979'></a><a href='#L979'>979</a>
-<a name='L980'></a><a href='#L980'>980</a>
-<a name='L981'></a><a href='#L981'>981</a>
-<a name='L982'></a><a href='#L982'>982</a>
-<a name='L983'></a><a href='#L983'>983</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L978'></a><a href='#L978'>978</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1709,7 +1704,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1747,10 +1741,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -2688,8 +2678,7 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
 <span class="cstat-no" title="statement not covered" >      mat4.translate(tmpMat4, tmpMat4, center);</span>
       // tmpMat4 is now SC-&gt;World
 &nbsp;
-      const vol = <span class="cstat-no" title="statement not covered" >model.volumes[vidx];</span>
-      const mcwcmat = <span class="cstat-no" title="statement not covered" >vol.getRenderable().getMatrix();</span>
+      const mcwcmat = <span class="cstat-no" title="statement not covered" >actor.getMatrix();</span>
 <span class="cstat-no" title="statement not covered" >      mat4.transpose(tmp2Mat4, mcwcmat);</span>
 <span class="cstat-no" title="statement not covered" >      mat4.invert(tmp2Mat4, tmp2Mat4);</span>
       // tmp2Mat4 is now world to model
@@ -2729,11 +2718,7 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUVolumePas
 <span class="cstat-no" title="statement not covered" >      spacingArray[vidx * 4 + 3] = 1.0;</span>
 &nbsp;
       // handle filteringMode
-      const tformat = <span class="cstat-no" title="statement not covered" >model.textureViews[vidx + 4].getTexture().getFormat();</span>
-      const tDetails = <span class="cstat-no" title="statement not covered" >vtkWebGPUTypes.getDetailsFromTextureFormat(tformat);</span>
-      const halfFloat =
-<span class="cstat-no" title="statement not covered" >        tDetails.elementSize === 2 &amp;&amp; tDetails.sampleType === 'float';</span>
-      const tScale = <span class="cstat-no" title="statement not covered" >halfFloat ? 1.0 : 255.0;</span>
+      const tScale = <span class="cstat-no" title="statement not covered" >model.textureViews[vidx + 4].getTexture().getScale();</span>
       const ipScalarRange = <span class="cstat-no" title="statement not covered" >volMapr.getIpScalarRange();</span>
 <span class="cstat-no" title="statement not covered" >      ipScalarRangeArray[vidx * 4] = ipScalarRange[0] / tScale;</span>
 <span class="cstat-no" title="statement not covered" >      ipScalarRangeArray[vidx * 4 + 1] = ipScalarRange[1] / tScale;</span>
@@ -3010,7 +2995,7 @@ export default { newInstance, extend };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Oct 06 2021 17:58:36 GMT+0000 (Coordinated Universal Time)
+                at Wed Oct 06 2021 20:04:18 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
