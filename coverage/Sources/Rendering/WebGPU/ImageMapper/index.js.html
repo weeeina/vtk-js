@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">3.92% </span>
+                <span class="strong">3.86% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/255</span>
+                <span class='fraction'>10/259</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.03% </span>
+                <span class="strong">3.98% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/248</span>
+                <span class='fraction'>10/251</span>
             </div>
         
             
@@ -590,9 +590,7 @@
 <a name='L531'></a><a href='#L531'>531</a>
 <a name='L532'></a><a href='#L532'>532</a>
 <a name='L533'></a><a href='#L533'>533</a>
-<a name='L534'></a><a href='#L534'>534</a>
-<a name='L535'></a><a href='#L535'>535</a>
-<a name='L536'></a><a href='#L536'>536</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L534'></a><a href='#L534'>534</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -614,9 +612,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -895,12 +890,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1170,9 +1166,6 @@ fn main(
   var output: fragmentOutput;
 &nbsp;
   //VTK::Image::Sample
-  computedColor.g = computedColor.r;
-  computedColor.b = computedColor.r;
-  computedColor.a = 1.0;
 &nbsp;
   // var computedColor: vec4&lt;f32&gt; = vec4&lt;f32&gt;(1.0,0.7, 0.5, 1.0);
 &nbsp;
@@ -1429,13 +1422,14 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUImageMapp
             }
           } else {
 <span class="cstat-no" title="statement not covered" >            for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; model.rowLength; i++) {</span>
-<span class="cstat-no" title="statement not covered" >              colorArray[c * model.rowLength * 8 + i * 4] =</span>
-                255.0 * tmpTable[i * 3];
-<span class="cstat-no" title="statement not covered" >              colorArray[c * model.rowLength * 8 + i * 4 + 1] =</span>
-                255.0 * tmpTable[i * 3 + 1];
-<span class="cstat-no" title="statement not covered" >              colorArray[c * model.rowLength * 8 + i * 4 + 2] =</span>
-                255.0 * tmpTable[i * 3 + 2];
-<span class="cstat-no" title="statement not covered" >              colorArray[c * model.rowLength * 8 + i * 4 + 3] = 255.0;</span>
+              const idx = <span class="cstat-no" title="statement not covered" >c * model.rowLength * 8 + i * 4;</span>
+<span class="cstat-no" title="statement not covered" >              colorArray[idx] = 255.0 * tmpTable[i * 3];</span>
+<span class="cstat-no" title="statement not covered" >              colorArray[idx + 1] = 255.0 * tmpTable[i * 3 + 1];</span>
+<span class="cstat-no" title="statement not covered" >              colorArray[idx + 2] = 255.0 * tmpTable[i * 3 + 2];</span>
+<span class="cstat-no" title="statement not covered" >              colorArray[idx + 3] = 255.0;</span>
+<span class="cstat-no" title="statement not covered" >              for (let j = <span class="cstat-no" title="statement not covered" >0;</span> j &lt; 4; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                colorArray[idx + model.rowLength * 4 + j] = colorArray[idx + j];</span>
+              }
             }
           }
         }
@@ -1669,7 +1663,7 @@ registerOverride('vtkImageMapper', newInstance);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Oct 15 2021 18:12:16 GMT+0000 (Coordinated Universal Time)
+                at Fri Oct 15 2021 20:07:28 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
