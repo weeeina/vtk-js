@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">3.16% </span>
+                <span class="strong">3.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/95</span>
+                <span class='fraction'>3/96</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">3.23% </span>
+                <span class="strong">3.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/93</span>
+                <span class='fraction'>3/94</span>
             </div>
         
             
@@ -331,7 +331,10 @@
 <a name='L272'></a><a href='#L272'>272</a>
 <a name='L273'></a><a href='#L273'>273</a>
 <a name='L274'></a><a href='#L274'>274</a>
-<a name='L275'></a><a href='#L275'>275</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -410,13 +413,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -684,42 +690,45 @@ function <span class="fstat-no" title="function not covered" >vtkWebGPUTexture(<
       // bytesPerRow must be a multiple of 256 so we might need to rebuild
       // the data here before passing to the buffer. e.g. if it is unorm8x4 then
       // we need to have width be a multiple of 64
-      const currWidthInBytes = <span class="cstat-no" title="statement not covered" >model.width * req.nativeArray.BYTES_PER_ELEMENT;</span>
+      const inWidthInBytes =
+<span class="cstat-no" title="statement not covered" >        (req.nativeArray.length / (model.height * model.depth)) *</span>
+        req.nativeArray.BYTES_PER_ELEMENT;
 &nbsp;
       // is this a half float texture?
       const halfFloat =
 <span class="cstat-no" title="statement not covered" >        tDetails.elementSize === 2 &amp;&amp; tDetails.sampleType === 'float';</span>
 &nbsp;
       // if we need to copy the data
-<span class="cstat-no" title="statement not covered" >      if (halfFloat || currWidthInBytes % 256) {</span>
+<span class="cstat-no" title="statement not covered" >      if (halfFloat || inWidthInBytes % 256) {</span>
         const inArray = <span class="cstat-no" title="statement not covered" >req.nativeArray;</span>
-        const bufferWidthInBytes =
-<span class="cstat-no" title="statement not covered" >          256 * Math.floor((currWidthInBytes + 255) / 256);</span>
+        const inWidth = <span class="cstat-no" title="statement not covered" >inWidthInBytes / inArray.BYTES_PER_ELEMENT;</span>
 &nbsp;
-        const bufferWidth = <span class="cstat-no" title="statement not covered" >bufferWidthInBytes / tDetails.elementSize;</span>
-        const inWidth = <span class="cstat-no" title="statement not covered" >currWidthInBytes / inArray.BYTES_PER_ELEMENT;</span>
+        const outBytesPerElement = <span class="cstat-no" title="statement not covered" >tDetails.elementSize;</span>
+        const outWidthInBytes =
+<span class="cstat-no" title="statement not covered" >          256 * Math.floor((inWidth * outBytesPerElement + 255) / 256);</span>
+        const outWidth = <span class="cstat-no" title="statement not covered" >outWidthInBytes / outBytesPerElement;</span>
 &nbsp;
         const outArray = <span class="cstat-no" title="statement not covered" >macro.newTypedArray(</span>
           halfFloat ? 'Uint16Array' : inArray.constructor.name,
-          bufferWidth * model.height * model.depth
+          outWidth * model.height * model.depth
         );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        for (let v = <span class="cstat-no" title="statement not covered" >0;</span> v &lt; model.height * model.depth; v++) {</span>
 <span class="cstat-no" title="statement not covered" >          if (halfFloat) {</span>
 <span class="cstat-no" title="statement not covered" >            for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; inWidth; i++) {</span>
-<span class="cstat-no" title="statement not covered" >              outArray[v * bufferWidth + i] = HalfFloat.toHalf(</span>
+<span class="cstat-no" title="statement not covered" >              outArray[v * outWidth + i] = HalfFloat.toHalf(</span>
                 inArray[v * inWidth + i]
               );
             }
           } else {
 <span class="cstat-no" title="statement not covered" >            outArray.set(</span>
               inArray.subarray(v * inWidth, (v + 1) * inWidth),
-              v * bufferWidth
+              v * outWidth
             );
           }
         }
 <span class="cstat-no" title="statement not covered" >        buffRequest.nativeArray = outArray;</span>
-<span class="cstat-no" title="statement not covered" >        bufferBytesPerRow = bufferWidthInBytes;</span>
+<span class="cstat-no" title="statement not covered" >        bufferBytesPerRow = outWidthInBytes;</span>
       }
       const buff = <span class="cstat-no" title="statement not covered" >model.device.getBufferManager().getBuffer(buffRequest);</span>
 <span class="cstat-no" title="statement not covered" >      model.buffer = buff;</span>
@@ -886,7 +895,7 @@ export default { newInstance, extend };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Oct 19 2021 13:06:23 GMT+0000 (Coordinated Universal Time)
+                at Tue Oct 19 2021 17:55:07 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
