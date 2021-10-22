@@ -2042,7 +2042,19 @@
 <a name='L1983'></a><a href='#L1983'>1983</a>
 <a name='L1984'></a><a href='#L1984'>1984</a>
 <a name='L1985'></a><a href='#L1985'>1985</a>
-<a name='L1986'></a><a href='#L1986'>1986</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L1986'></a><a href='#L1986'>1986</a>
+<a name='L1987'></a><a href='#L1987'>1987</a>
+<a name='L1988'></a><a href='#L1988'>1988</a>
+<a name='L1989'></a><a href='#L1989'>1989</a>
+<a name='L1990'></a><a href='#L1990'>1990</a>
+<a name='L1991'></a><a href='#L1991'>1991</a>
+<a name='L1992'></a><a href='#L1992'>1992</a>
+<a name='L1993'></a><a href='#L1993'>1993</a>
+<a name='L1994'></a><a href='#L1994'>1994</a>
+<a name='L1995'></a><a href='#L1995'>1995</a>
+<a name='L1996'></a><a href='#L1996'>1996</a>
+<a name='L1997'></a><a href='#L1997'>1997</a>
+<a name='L1998'></a><a href='#L1998'>1998</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2842,9 +2854,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2892,9 +2910,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -4811,9 +4835,9 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
                 FSSource,
                 '//VTK::TCoord::Impl',
                 [
-                  'vec4 tcolor = texture2D(texture1, tcoordVCVSOutput);',
-                  'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*',
-                  '  vec4(tcolor.r,tcolor.r,tcolor.r,1.0);',
+                  '  vec4 tcolor = texture2D(texture1, tcoordVCVSOutput);',
+                  '  ambientColor = ambientColor*tcolor.r;',
+                  '  diffuseColor = diffuseColor*tcolor.r;',
                 ]
               ).result;
 <span class="cstat-no" title="statement not covered" >              break;</span>
@@ -4822,9 +4846,10 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
                 FSSource,
                 '//VTK::TCoord::Impl',
                 [
-                  'vec4 tcolor = texture2D(texture1, tcoordVCVSOutput);',
-                  'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*',
-                  '  vec4(tcolor.r,tcolor.r,tcolor.r,tcolor.g);',
+                  '  vec4 tcolor = texture2D(texture1, tcoordVCVSOutput);',
+                  '  ambientColor = ambientColor*tcolor.r;',
+                  '  diffuseColor = diffuseColor*tcolor.r;',
+                  '  opacity = opacity * tcolor.g;',
                 ]
               ).result;
 <span class="cstat-no" title="statement not covered" >              break;</span>
@@ -4832,7 +4857,12 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
 <span class="cstat-no" title="statement not covered" >              FSSource = vtkShaderProgram.substitute(</span>
                 FSSource,
                 '//VTK::TCoord::Impl',
-                'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*texture2D(texture1, tcoordVCVSOutput.st);'
+                [
+                  '  vec4 tcolor = texture2D(texture1, tcoordVCVSOutput);',
+                  '  ambientColor = ambientColor*tcolor.rgb;',
+                  '  diffuseColor = diffuseColor*tcolor.rgb;',
+                  '  opacity = opacity * tcolor.a;',
+                ]
               ).result;
           }
         }
@@ -4861,9 +4891,9 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
               FSSource,
               '//VTK::TCoord::Impl',
               [
-                'vec4 tcolor = textureCube(texture1, tcoordVCVSOutput);',
-                'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*',
-                '  vec4(tcolor.r,tcolor.r,tcolor.r,1.0);',
+                '  vec4 tcolor = textureCube(texture1, tcoordVCVSOutput);',
+                '  ambientColor = ambientColor*tcolor.r;',
+                '  diffuseColor = diffuseColor*tcolor.r;',
               ]
             ).result;
 <span class="cstat-no" title="statement not covered" >            break;</span>
@@ -4872,9 +4902,10 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
               FSSource,
               '//VTK::TCoord::Impl',
               [
-                'vec4 tcolor = textureCube(texture1, tcoordVCVSOutput);',
-                'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*',
-                '  vec4(tcolor.r,tcolor.r,tcolor.r,tcolor.g);',
+                '  vec4 tcolor = textureCube(texture1, tcoordVCVSOutput);',
+                '  ambientColor = ambientColor*tcolor.r;',
+                '  diffuseColor = diffuseColor*tcolor.r;',
+                '  opacity = opacity * tcolor.g;',
               ]
             ).result;
 <span class="cstat-no" title="statement not covered" >            break;</span>
@@ -4882,7 +4913,12 @@ function vtkOpenGLPolyDataMapper(publicAPI, model) {
             FSSource = vtkShaderProgram.substitute(
               FSSource,
               '//VTK::TCoord::Impl',
-              'gl_FragData[0] = clamp(gl_FragData[0],0.0,1.0)*textureCube(texture1, tcoordVCVSOutput);'
+              [
+                '  vec4 tcolor = textureCube(texture1, tcoordVCVSOutput);',
+                '  ambientColor = ambientColor*tcolor.rgb;',
+                '  diffuseColor = diffuseColor*tcolor.rgb;',
+                '  opacity = opacity * tcolor.a;',
+              ]
             ).result;
         }
       }
@@ -6019,7 +6055,7 @@ registerOverride('vtkMapper', newInstance);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Oct 20 2021 18:44:52 GMT+0000 (Coordinated Universal Time)
+                at Fri Oct 22 2021 22:09:07 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
