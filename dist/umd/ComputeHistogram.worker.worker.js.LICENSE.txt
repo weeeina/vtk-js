@@ -1,0 +1,6 @@
+/*!
+ * @project        vtk.js
+ * @build          Thu, Jan 13, 2022 3:59 PM ET
+ * @copyright      Copyright (c) 2022 Kitware, Inc.
+ *
+ */
