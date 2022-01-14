@@ -48,7 +48,7 @@ function convertItkToVtkImage(itkImage, options = {}) {
       // column-major data layout. Transpose the direction matrix from
       // itkImage when instantiating that vtkImageData direction matrix.
       direction[col + idx * 3] =
-        itkImage.direction.data[idx + col * itkImage.imageType.dimension];
+        itkImage.direction[idx + col * itkImage.imageType.dimension];
     }
   }
 
@@ -70,7 +70,7 @@ function convertItkToVtkImage(itkImage, options = {}) {
 
   // Associate the point data that are 3D vectors / tensors
   // Refer to itk-js/src/PixelTypes.js for numerical values
-  switch (itkImage.imageType.pixelType) {
+  switch (ITKPixelTypes[itkImage.imageType.pixelType]) {
     case ITKPixelTypes.Scalar:
       break;
     case ITKPixelTypes.RGB:
