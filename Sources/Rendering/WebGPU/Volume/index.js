@@ -17,9 +17,8 @@ function vtkWebGPUVolume(publicAPI, model) {
       return;
     }
     if (prepass) {
-      model.WebGPURenderer = publicAPI.getFirstAncestorOfType(
-        'vtkWebGPURenderer'
-      );
+      model.WebGPURenderer =
+        publicAPI.getFirstAncestorOfType('vtkWebGPURenderer');
       model.WebGPURenderWindow = model.WebGPURenderer.getFirstAncestorOfType(
         'vtkWebGPURenderWindow'
       );

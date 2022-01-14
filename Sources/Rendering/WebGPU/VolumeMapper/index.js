@@ -217,9 +217,8 @@ function vtkWebGPUVolumeMapper(publicAPI, model) {
   publicAPI.buildPass = (prepass) => {
     if (prepass) {
       model.WebGPUVolume = publicAPI.getFirstAncestorOfType('vtkWebGPUVolume');
-      model.WebGPURenderer = model.WebGPUVolume.getFirstAncestorOfType(
-        'vtkWebGPURenderer'
-      );
+      model.WebGPURenderer =
+        model.WebGPUVolume.getFirstAncestorOfType('vtkWebGPURenderer');
       model.WebGPURenderWindow = model.WebGPURenderer.getParent();
       model.device = model.WebGPURenderWindow.getDevice();
     }

@@ -13,9 +13,8 @@ function vtkOpenGLCamera(publicAPI, model) {
 
   publicAPI.buildPass = (prepass) => {
     if (prepass) {
-      model.openGLRenderer = publicAPI.getFirstAncestorOfType(
-        'vtkOpenGLRenderer'
-      );
+      model.openGLRenderer =
+        publicAPI.getFirstAncestorOfType('vtkOpenGLRenderer');
       model.openGLRenderWindow = model.openGLRenderer.getParent();
       model.context = model.openGLRenderWindow.getContext();
     }

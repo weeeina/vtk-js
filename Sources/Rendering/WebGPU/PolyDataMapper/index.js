@@ -121,9 +121,8 @@ function vtkWebGPUPolyDataMapper(publicAPI, model) {
   publicAPI.buildPass = (prepass) => {
     if (prepass) {
       model.WebGPUActor = publicAPI.getFirstAncestorOfType('vtkWebGPUActor');
-      model.WebGPURenderer = model.WebGPUActor.getFirstAncestorOfType(
-        'vtkWebGPURenderer'
-      );
+      model.WebGPURenderer =
+        model.WebGPUActor.getFirstAncestorOfType('vtkWebGPURenderer');
       model.WebGPURenderWindow = model.WebGPURenderer.getParent();
       model.device = model.WebGPURenderWindow.getDevice();
     }
@@ -396,8 +395,11 @@ function vtkWebGPUPolyDataMapper(publicAPI, model) {
       );
     }
 
-    code = vtkWebGPUShaderCache.substitute(code, '//VTK::TCoord::Dec', tcinput)
-      .result;
+    code = vtkWebGPUShaderCache.substitute(
+      code,
+      '//VTK::TCoord::Dec',
+      tcinput
+    ).result;
 
     if (model.textures.length) {
       code = vtkWebGPUShaderCache.substitute(code, '//VTK::TCoord::Impl', [

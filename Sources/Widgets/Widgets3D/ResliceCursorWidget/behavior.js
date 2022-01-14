@@ -316,9 +316,8 @@ export default function widgetBehavior(publicAPI, model) {
     );
 
     const center = model.widgetState.getCenter();
-    const previousWorldPosition = activeLine[
-      `get${model.widgetState.getActiveRotationPointName()}`
-    ]();
+    const previousWorldPosition =
+      activeLine[`get${model.widgetState.getActiveRotationPointName()}`]();
 
     const previousVectorToOrigin = [0, 0, 0];
     vtkMath.subtract(previousWorldPosition, center, previousVectorToOrigin);

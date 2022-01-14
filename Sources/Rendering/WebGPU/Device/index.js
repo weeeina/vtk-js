@@ -39,9 +39,8 @@ function vtkWebGPUDevice(publicAPI, model) {
           },
         ],
       };
-      model.rendererBindGroupLayout = model.handle.createBindGroupLayout(
-        descriptor
-      );
+      model.rendererBindGroupLayout =
+        model.handle.createBindGroupLayout(descriptor);
     }
     return model.rendererBindGroupLayout;
   };
@@ -63,9 +62,8 @@ function vtkWebGPUDevice(publicAPI, model) {
           },
         ],
       };
-      model.mapperBindGroupLayout = model.handle.createBindGroupLayout(
-        descriptor
-      );
+      model.mapperBindGroupLayout =
+        model.handle.createBindGroupLayout(descriptor);
     }
     return model.mapperBindGroupLayout;
   };
@@ -87,9 +85,8 @@ function vtkWebGPUDevice(publicAPI, model) {
           },
         ],
       };
-      model.storageBindGroupLayout = model.handle.createBindGroupLayout(
-        descriptor
-      );
+      model.storageBindGroupLayout =
+        model.handle.createBindGroupLayout(descriptor);
     }
     return model.storageBindGroupLayout;
   };
@@ -109,9 +106,8 @@ function vtkWebGPUDevice(publicAPI, model) {
           },
         ],
       };
-      model.samplerBindGroupLayout = model.handle.createBindGroupLayout(
-        descriptor
-      );
+      model.samplerBindGroupLayout =
+        model.handle.createBindGroupLayout(descriptor);
     }
     return model.samplerBindGroupLayout;
   };
@@ -142,9 +138,8 @@ function vtkWebGPUDevice(publicAPI, model) {
           },
         ],
       };
-      model.textureBindGroupLayout = model.handle.createBindGroupLayout(
-        descriptor
-      );
+      model.textureBindGroupLayout =
+        model.handle.createBindGroupLayout(descriptor);
     }
     return model.textureBindGroupLayout;
   };

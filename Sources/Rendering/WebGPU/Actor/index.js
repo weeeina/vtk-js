@@ -14,9 +14,8 @@ function vtkWebGPUActor(publicAPI, model) {
   // Builds myself.
   publicAPI.buildPass = (prepass) => {
     if (prepass) {
-      model.WebGPURenderer = publicAPI.getFirstAncestorOfType(
-        'vtkWebGPURenderer'
-      );
+      model.WebGPURenderer =
+        publicAPI.getFirstAncestorOfType('vtkWebGPURenderer');
       model.WebGPURenderWindow = model.WebGPURenderer.getFirstAncestorOfType(
         'vtkWebGPURenderWindow'
       );

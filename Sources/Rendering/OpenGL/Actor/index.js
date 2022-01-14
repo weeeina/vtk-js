@@ -17,9 +17,8 @@ function vtkOpenGLActor(publicAPI, model) {
       model.openGLRenderWindow = publicAPI.getFirstAncestorOfType(
         'vtkOpenGLRenderWindow'
       );
-      model.openGLRenderer = publicAPI.getFirstAncestorOfType(
-        'vtkOpenGLRenderer'
-      );
+      model.openGLRenderer =
+        publicAPI.getFirstAncestorOfType('vtkOpenGLRenderer');
       model.context = model.openGLRenderWindow.getContext();
       publicAPI.prepareNodes();
       publicAPI.addMissingNodes(model.renderable.getTextures());

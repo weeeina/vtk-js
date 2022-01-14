@@ -20,9 +20,8 @@ function vtkOpenGLTexture(publicAPI, model) {
     if (renWin) {
       model.openGLRenderWindow = renWin;
     } else {
-      model.openGLRenderer = publicAPI.getFirstAncestorOfType(
-        'vtkOpenGLRenderer'
-      );
+      model.openGLRenderer =
+        publicAPI.getFirstAncestorOfType('vtkOpenGLRenderer');
       // sync renderable properties
       model.openGLRenderWindow = model.openGLRenderer.getParent();
     }
@@ -1079,10 +1078,8 @@ function vtkOpenGLTexture(publicAPI, model) {
       // otherwise convert to float
       const newArray = new Float32Array(numPixelsIn * numComps);
       // compute min and max values
-      const {
-        offset: computedOffset,
-        scale: computedScale,
-      } = computeScaleOffsets(numComps, numPixelsIn, data);
+      const { offset: computedOffset, scale: computedScale } =
+        computeScaleOffsets(numComps, numPixelsIn, data);
       model.volumeInfo.offset = computedOffset;
       model.volumeInfo.scale = computedScale;
       let count = 0;

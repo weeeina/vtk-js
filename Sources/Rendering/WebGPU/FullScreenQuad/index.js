@@ -119,8 +119,11 @@ function vtkWebGPUFullScreenQuad(publicAPI, model) {
       );
     }
 
-    code = vtkWebGPUShaderCache.substitute(code, '//VTK::TCoord::Dec', tcinput)
-      .result;
+    code = vtkWebGPUShaderCache.substitute(
+      code,
+      '//VTK::TCoord::Dec',
+      tcinput
+    ).result;
 
     fDesc.setCode(code);
   };
